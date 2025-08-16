@@ -12,15 +12,33 @@
         max-width: 1800px;
         background-color: #141516;
 
+        @media (max-width: 768px) {
+            padding-top: 100px;
+        }
+
         .title{
             border-bottom: 1px solid rgb(134, 134, 134);
             padding-bottom: 100px;
             margin-left: 200px;
             margin-right: 200px;
             position: relative;
+            
+            @media (max-width: 768px) {
+                margin-left: 20px;
+                margin-right: 20px;
+                padding-bottom: 60px;
+            }
+            
             span{
                 display: flex;
                 align-items: center;
+                
+                @media (max-width: 768px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 20px;
+                }
+                
                 .imageContainer{
                     width: 100px;
                     height: 100px;
@@ -28,23 +46,43 @@
                     border-radius: 50%;
                     overflow: hidden;
 
+                    @media (max-width: 768px) {
+                        width: 60px;
+                        height: 60px;
+                    }
+
                     img{
                         object-fit: cover;
                     }
                 }
                 h2{
                     margin-left: 0.3em;
+                    
+                    @media (max-width: 768px) {
+                        margin-left: 0;
+                    }
                 }
             }
             h2{
                 font-size: 5vw;
                 margin: 0px;
                 font-weight: 300;
+                
+                @media (max-width: 768px) {
+                    font-size: 8vw;
+                }
             }
             .buttonContainer{
                 position: absolute;
                 left: calc(100% - 400px); 
                 top: calc(100% - 75px);
+                
+                @media (max-width: 768px) {
+                    position: relative;
+                    left: auto;
+                    top: auto;
+                    margin-top: 40px;
+                }
             }
             .button{
                 width: 180px;
@@ -57,18 +95,33 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                
+                @media (max-width: 768px) {
+                    width: 120px;
+                    height: 120px;
+                    position: relative;
+                }
+                
                 p{
                     margin: 0px;
                     font-size: 16px;
                     font-weight: 300;
                     z-index: 2;
                     position: relative;
+                    
+                    @media (max-width: 768px) {
+                        font-size: 14px;
+                    }
                 }
             }
             svg{
                 position: absolute;
                 top: 30%;
                 left: 100%;
+                
+                @media (max-width: 768px) {
+                    display: none;
+                }
             }
         }
         .nav{
@@ -77,16 +130,39 @@
             margin-top: 100px;
             margin-left: 200px;
             margin-right: 200px;
+            
+            @media (max-width: 768px) {
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 60px;
+                flex-direction: column;
+                gap: 15px;
+            }
         }
         .info{
             display: flex;
             justify-content: space-between;
             margin-top: 200px;
             padding: 20px;
+            
+            @media (max-width: 768px) {
+                margin-top: 100px;
+                flex-direction: column;
+                gap: 40px;
+                padding: 20px;
+            }
+            
             div{
                 display: flex;
                 gap: 10px;
                 align-items: flex-end;
+                
+                @media (max-width: 768px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 20px;
+                }
+                
                 p, h3{
                     margin: 0px;
                     padding: 2.5px;

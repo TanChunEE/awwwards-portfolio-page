@@ -8,10 +8,19 @@
     justify-content: center;
     padding: 15px 60px 15px 60px;
 
+    @media (max-width: 768px) {
+        padding: 12px 40px 12px 40px;
+        border-radius: 2em;
+    }
+
     p{
         position: relative;
         z-index: 1;
         transition: color 0.4s linear;
+        
+        @media (max-width: 768px) {
+            font-size: 14px;
+        }
     }
 
     &:hover{

@@ -52,24 +52,34 @@ export default function Home() {
   let yMoveCursorLabel = useRef(null);
 
   useEffect( () => {
-    //Move Container
-    xMoveContainer.current = gsap.quickTo(modalContainer.current, "left", {duration: 0.8, ease: "power3"})
-    yMoveContainer.current = gsap.quickTo(modalContainer.current, "top", {duration: 0.8, ease: "power3"})
-    //Move cursor
-    xMoveCursor.current = gsap.quickTo(cursor.current, "left", {duration: 0.5, ease: "power3"})
-    yMoveCursor.current = gsap.quickTo(cursor.current, "top", {duration: 0.5, ease: "power3"})
-    //Move cursor label
-    xMoveCursorLabel.current = gsap.quickTo(cursorLabel.current, "left", {duration: 0.45, ease: "power3"})
-    yMoveCursorLabel.current = gsap.quickTo(cursorLabel.current, "top", {duration: 0.45, ease: "power3"})
+    // Check if device supports touch (mobile)
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    // Only initialize mouse move effects on non-touch devices
+    if (!isTouchDevice) {
+      //Move Container
+      xMoveContainer.current = gsap.quickTo(modalContainer.current, "left", {duration: 0.8, ease: "power3"})
+      yMoveContainer.current = gsap.quickTo(modalContainer.current, "top", {duration: 0.8, ease: "power3"})
+      //Move cursor
+      xMoveCursor.current = gsap.quickTo(cursor.current, "left", {duration: 0.5, ease: "power3"})
+      yMoveCursor.current = gsap.quickTo(cursor.current, "top", {duration: 0.5, ease: "power3"})
+      //Move cursor label
+      xMoveCursorLabel.current = gsap.quickTo(cursorLabel.current, "left", {duration: 0.45, ease: "power3"})
+      yMoveCursorLabel.current = gsap.quickTo(cursorLabel.current, "top", {duration: 0.45, ease: "power3"})
+    }
   }, [])
 
   const moveItems = (x, y) => {
-    xMoveContainer.current(x)
-    yMoveContainer.current(y)
-    xMoveCursor.current(x)
-    yMoveCursor.current(y)
-    xMoveCursorLabel.current(x)
-    yMoveCursorLabel.current(y)
+    // Only move items if not on touch device
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (!isTouchDevice) {
+      xMoveContainer.current(x)
+      yMoveContainer.current(y)
+      xMoveCursor.current(x)
+      yMoveCursor.current(y)
+      xMoveCursorLabel.current(x)
+      yMoveCursorLabel.current(y)
+    }
   }
   const manageModal = (active, index, x, y) => {
     moveItems(x, y)

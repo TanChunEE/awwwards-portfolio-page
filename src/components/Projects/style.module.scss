@@ -6,6 +6,12 @@
     flex-direction: column;
     margin-top: 300px;
 
+    @media (max-width: 768px) {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 150px;
+    }
+
     .body{
         max-width: 1400px;
         width: 100%;
@@ -14,6 +20,10 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 100px;
+        
+        @media (max-width: 768px) {
+            margin-bottom: 50px;
+        }
     }
     
     .modalContainer{
@@ -26,6 +36,12 @@
         pointer-events: none;
         overflow: hidden;
         z-index: 3;
+        
+        @media (max-width: 768px) {
+            height: 250px;
+            width: 280px;
+            display: none; /* Hide modal on mobile for better UX */
+        }
     }
     
     .modalSlider{
@@ -61,6 +77,10 @@
         font-size: 14px;
         font-weight: 300;
         pointer-events: none;
+        
+        @media (max-width: 768px) {
+            display: none; /* Hide cursor on mobile */
+        }
     }
     
     .cursorLabel{
