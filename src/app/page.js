@@ -8,32 +8,28 @@ import Projects from '../components/Projects';
 import Description from '../components/Description';
 import SlidingImages from '../components/SlidingImages';
 import Contact from '../components/Contact';
+import { useLocomotiveScroll } from '../hooks/useLocomotiveScroll';
 
 export default function Home() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect( () => {
-    (
-      async () => {
-          const LocomotiveScroll = (await import('locomotive-scroll')).default
-          const locomotiveScroll = new LocomotiveScroll();
+  // Initialize Locomotive Scroll
+  useLocomotiveScroll();
 
-          setTimeout( () => {
-            setIsLoading(false);
-            document.body.style.cursor = 'default'
-            window.scrollTo(0,0);
-          }, 2000)
-      }
-    )()
+  useEffect( () => {
+    // Simulate loading time for preloader
+    setTimeout( () => {
+      setIsLoading(false);
+    }, 2000)
   }, [])
 
   return (
-    <main className={styles.main}>
+    <main className={styles.main} data-scroll-container>
       <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
-      {/* <Landing /> */}
+      <Landing />
       <Description />
       <Projects />
       <SlidingImages />

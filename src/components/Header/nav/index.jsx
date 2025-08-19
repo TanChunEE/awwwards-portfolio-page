@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './style.module.scss';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
@@ -30,6 +30,12 @@ export default function index() {
 
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
+  const [isMounted, setIsMounted] = useState(true);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   return (
     <motion.div 

@@ -5,7 +5,7 @@ import { slideUp, opacity } from './animation';
 import Rounded from '../../common/RoundedButton';
 export default function index() {
 
-    const phrase = "Helping brands to stand out in the digital era. Together we will set the new status quo. No nonsense, always on the cutting edge.";
+    const phrase = "Hi, I'm someone who loves turning ideas into experiences. I enjoy crafting digital solutions that not only look good but also make a real impact. For me, design and development are all about blending creativity with purpose — and creating work that truly connects with people.";
     const description = useRef(null);
     const isInView = useInView(description)
     return (

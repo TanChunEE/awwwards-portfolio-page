@@ -23,7 +23,17 @@ export default function Index() {
 
   return (
     <svg className={styles.svgCurve}>
-        <motion.path variants={curve} initial="initial" animate="enter" exit="exit"></motion.path>
+        <motion.path 
+          variants={curve} 
+          initial="initial" 
+          animate="enter" 
+          exit="exit" 
+          onAnimationComplete={(definition) => {
+            if (definition === 'exit' && typeof window !== 'undefined') {
+              window.dispatchEvent(new Event('app:navExited'));
+            }
+          }}
+        />
     </svg>
   )
 }

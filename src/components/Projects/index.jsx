@@ -9,22 +9,26 @@ import Rounded from '../../common/RoundedButton';
 
 const projects = [
   {
-    title: "C2 Montreal",
+    title: "INNOXPAY",
+    role: "Figma UI/UX",
     src: "c2montreal.png",
     color: "#000000"
   },
   {
-    title: "Office Studio",
+    title: "3D Portfolio",
+    role: "Design & Development",
     src: "officestudio.png",
     color: "#8C8C8C"
   },
   {
-    title: "Locomotive",
+    title: "Freight-X",
+    role: "Software Development",
     src: "locomotive.png",
     color: "#EFE8D3"
   },
   {
-    title: "Silencio",
+    title: "IDP",
+    role: "AI Integration",
     src: "silencio.png",
     color: "#706D63"
   }
@@ -91,7 +95,7 @@ export default function Home() {
     <div className={styles.body}>
       {
         projects.map( (project, index) => {
-          return <Project index={index} title={project.title} manageModal={manageModal} key={index}/>
+          return <Project index={index} title={project.title} role={project.role} manageModal={manageModal} key={index}/>
         })
       }
     </div>
@@ -99,25 +103,25 @@ export default function Home() {
       <p>More work</p>
     </Rounded>
     <>
-        <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className={styles.modalContainer}>
-            <div style={{top: index * -100 + "%"}} className={styles.modalSlider}>
-            {
-                projects.map( (project, index) => {
-                const { src, color } = project
-                return <div className={styles.modal} style={{backgroundColor: color}} key={`modal_${index}`}>
-                    <Image 
-                    src={`/images/${src}`}
-                    width={300}
-                    height={0}
-                    alt="image"
-                    />
-                </div>
-                })
-            }
+      <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className={styles.modalContainer}>
+        <div style={{top: index * -100 + "%"}} className={styles.modalSlider}>
+          {
+            projects.map( (project, index) => {
+            const { src, color } = project
+            return <div className={styles.modal} style={{backgroundColor: color}} key={`modal_${index}`}>
+              <Image 
+                src={`/images/${src}`}
+                width={300}
+                height={0}
+                alt="image"
+              />
             </div>
-        </motion.div>
-        <motion.div ref={cursor} className={styles.cursor} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}></motion.div>
-        <motion.div ref={cursorLabel} className={styles.cursorLabel} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}>View</motion.div>
+            })
+          }
+        </div>
+      </motion.div>
+      <motion.div ref={cursor} className={styles.cursor} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}></motion.div>
+      <motion.div ref={cursorLabel} className={styles.cursorLabel} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}>View</motion.div>
     </>
   </main>
   )

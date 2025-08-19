@@ -20,11 +20,11 @@ export default function index() {
                 <div className={styles.title}>
                     <span>
                         <div className={styles.imageContainer}>
-                            <Image 
+                            {/* <Image 
                             fill={true}
                             alt={"image"}
                             src={`/images/background.jpg`}
-                            />
+                            /> */}
                         </div>
                         <h2>Let's work</h2>
                     </span>
@@ -40,22 +40,22 @@ export default function index() {
                 </div>
                 <div className={styles.nav}>
                         <Rounded>
-                            <p>info@dennissnellenberg.com</p>
+                            <p>raymondtan2014@gmail.com</p>
                         </Rounded>
                         <Rounded>
-                            <p>+31 6 27 84 74 30</p>
+                            <p>+60-1110646345</p>
                         </Rounded>
                 </div>
                 <div className={styles.info}>
                     <div>
                         <span>
                             <h3>Version</h3>
-                            <p>2022 © Edition</p>
+                            <p>2025 © Edition</p>
                         </span>
-                        <span>
+                        {/* <span>
                             <h3>Version</h3>
                             <p>11:49 PM GMT+2</p>
-                        </span>
+                        </span> */}
                     </div>
                     <div>
                         <span>

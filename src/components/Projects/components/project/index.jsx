@@ -2,7 +2,7 @@
 import React from 'react'
 import styles from './style.module.scss';
 
-export default function index({index, title, manageModal}) {
+export default function index({index, title, role, manageModal}) {
 
     const handleInteraction = (isActive, e) => {
         // Check if device supports touch (mobile)
@@ -30,7 +30,7 @@ export default function index({index, title, manageModal}) {
             className={styles.project}
         >
             <h2>{title}</h2>
-            <p>Design & Development</p>
+            <p>{role}</p>
         </div>
     )
 }
