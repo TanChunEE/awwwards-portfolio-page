@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import Header from '../components/Header';
 import Provider from './provider';
 import SplashCursor from '@/common/SplashCursor/SplashCursor';
+import ParticleSystem from '../components/ParticleSystem';
+import SoundSystem from '../components/SoundSystem';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +26,9 @@ export default function RootLayout({ children }) {
       <head></head>
       <body className={inter.className} suppressHydrationWarning>
         <Provider>
-          <SplashCursor />
+          <ParticleSystem />
+          {/* <SoundSystem /> */}
+          {/* <SplashCursor /> */}
           <Header />
           {children}
         </Provider>

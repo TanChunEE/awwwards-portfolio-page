@@ -1,252 +1,312 @@
-// Base layer with vibrant gradient background
-.firstLayer {
+// Transition Overlay Container
+.transitionOverlay {
     position: fixed;
     inset: 0;
-    z-index: 50;
-    background: 
-        radial-gradient(ellipse at 20% 20%, 
-            rgba(255, 82, 197, 0.15) 0%, 
-            rgba(255, 82, 197, 0.05) 40%, 
-            transparent 70%),
-        radial-gradient(ellipse at 80% 80%, 
-            rgba(64, 224, 208, 0.15) 0%, 
-            rgba(64, 224, 208, 0.05) 40%, 
-            transparent 70%),
-        linear-gradient(135deg, 
-            #667eea 0%, 
-            #764ba2 25%, 
-            #f093fb 50%, 
-            #f5576c 75%, 
-            #4facfe 100%);
-    transform-origin: center;
-    box-shadow: 
-        inset 0 0 200px rgba(0, 0, 0, 0.3),
-        0 0 100px rgba(255, 82, 197, 0.2);
+    z-index: 9999;
     pointer-events: none;
-    filter: blur(0.5px);
+    overflow: hidden;
 }
 
-// Second layer with animated patterns
-.secondLayer {
-    position: fixed;
-    inset: 0;
-    z-index: 51;
-    background: 
-        repeating-linear-gradient(
-            45deg, 
-            transparent 0px, 
-            transparent 2px, 
-            rgba(255, 255, 255, 0.1) 2px, 
-            rgba(255, 255, 255, 0.1) 4px
-        ),
-        repeating-linear-gradient(
-            -45deg, 
-            transparent 0px, 
-            transparent 2px, 
-            rgba(255, 255, 255, 0.05) 2px, 
-            rgba(255, 255, 255, 0.05) 4px
-        );
-    transform-origin: center;
-    pointer-events: none;
-    animation: patternMove 15s linear infinite; // Reduced from 20s
-}
-
-// Third layer with dynamic color shifts
-.thirdLayer {
-    position: fixed;
-    inset: 0;
-    z-index: 52;
-    background: 
-        radial-gradient(circle at 30% 30%, 
-            rgba(255, 215, 0, 0.2) 0%, 
-            transparent 50%),
-        radial-gradient(circle at 70% 70%, 
-            rgba(138, 43, 226, 0.2) 0%, 
-            transparent 50%),
-        radial-gradient(circle at 50% 50%, 
-            rgba(255, 69, 0, 0.1) 0%, 
-            transparent 70%);
-    transform-origin: center;
-    pointer-events: none;
-    animation: colorShift 12s ease-in-out infinite; // Reduced from 15s
-}
-
-// Floating interactive elements
-.floatingElement {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: 
-        radial-gradient(circle, 
-            hsl(var(--hue), 80%, 70%) 0%, 
-            hsl(var(--hue), 80%, 50%) 50%, 
-            transparent 100%);
-    z-index: 53; // Adjusted z-index after removing fourth layer
-    pointer-events: none;
-    filter: blur(1px);
-    box-shadow: 
-        0 0 20px hsl(var(--hue), 80%, 60%),
-        inset 0 0 20px rgba(255, 255, 255, 0.3);
-    animation: float 6s ease-in-out infinite; // Reduced from 8s
-    animation-delay: var(--delay);
+// Color Wave 1 - Gradient sweep
+.colorWave1 {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(102, 126, 234, 0.95) 0%,
+        rgba(118, 75, 162, 0.95) 50%,
+        rgba(240, 147, 251, 0.95) 100%
+    );
+    transform-origin: left center;
+    z-index: 1;
     
     &::before {
         content: '';
         position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        animation: pulse 1.5s ease-in-out infinite; // Reduced from 2s
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+        animation: shimmer 2s ease-in-out infinite;
     }
 }
 
-// Cursor follower with trail effect
-.cursorFollower {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: 
-        radial-gradient(circle, 
-            rgba(255, 255, 255, 0.8) 0%, 
-            rgba(255, 255, 255, 0.4) 50%, 
-            transparent 100%);
-    border-radius: 50%;
-    z-index: 54; // Adjusted z-index after removing fourth layer
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    filter: blur(0.5px);
-    animation: cursorPulse 0.8s ease-in-out infinite; // Reduced from 1s
+// Color Wave 2 - Complementary gradient
+.colorWave2 {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        -45deg,
+        rgba(245, 87, 108, 0.9) 0%,
+        rgba(79, 172, 254, 0.9) 50%,
+        rgba(138, 43, 226, 0.9) 100%
+    );
+    transform-origin: right center;
+    z-index: 2;
+    mix-blend-mode: screen;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            repeating-linear-gradient(
+                90deg,
+                transparent 0px,
+                transparent 4px,
+                rgba(255, 255, 255, 0.05) 4px,
+                rgba(255, 255, 255, 0.05) 8px
+            );
+    }
+}
+
+// Liquid Morphing Shape
+.liquidShape {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 3;
+    filter: blur(0px);
+    
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(102, 126, 234, 0.4) 30%,
+        rgba(240, 147, 251, 0.3) 60%,
+        transparent 100%
+    );
     
     &::before {
         content: '';
         position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 40px;
-        height: 40px;
-        background: 
-            radial-gradient(circle, 
-                rgba(255, 255, 255, 0.3) 0%, 
-                transparent 70%);
+        inset: -20%;
+        background: inherit;
+        filter: blur(20px);
+        animation: liquidPulse 3s ease-in-out infinite;
+    }
+}
+
+.liquidInner {
+    position: absolute;
+    inset: 20%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    border-radius: 50%;
+    animation: liquidRotate 4s linear infinite;
+}
+
+// Glass Panel with glassmorphism
+.glassPanel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 300px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 0 40px rgba(255, 255, 255, 0.1);
+    z-index: 4;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.glassShine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 45%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.1) 55%,
+        transparent 100%
+    );
+    animation: glassShine 2s ease-in-out infinite;
+}
+
+// Logo Reveal
+.logoReveal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 5;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+    opacity: 0;
+    
+    svg {
+        display: block;
+        animation: logoFloat 2s ease-in-out infinite;
+    }
+}
+
+// Particles
+.particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        hsl(var(--hue), 80%, 70%) 0%,
+        hsl(var(--hue), 80%, 50%) 100%
+    );
+    z-index: 6;
+    box-shadow: 
+        0 0 20px hsl(var(--hue), 80%, 60%),
+        inset 0 0 10px rgba(255, 255, 255, 0.5);
+    
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 20%;
         border-radius: 50%;
-        transform: translate(-50%, -50%);
-        animation: cursorRipple 1.5s ease-out infinite; // Reduced from 2s
+        background: rgba(255, 255, 255, 0.8);
+        filter: blur(2px);
     }
 }
 
 // Animations
-@keyframes patternMove {
-    0% {
-        background-position: 0% 0%;
-    }
-    100% {
-        background-position: 100% 100%;
-    }
-}
-
-@keyframes colorShift {
+@keyframes shimmer {
     0%, 100% {
-        filter: hue-rotate(0deg) brightness(1);
-    }
-    25% {
-        filter: hue-rotate(90deg) brightness(1.1);
+        opacity: 1;
     }
     50% {
-        filter: hue-rotate(180deg) brightness(0.9);
-    }
-    75% {
-        filter: hue-rotate(270deg) brightness(1.05);
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px) scale(1);
         opacity: 0.7;
     }
-    50% {
-        transform: translateY(-20px) scale(1.1);
-        opacity: 1;
-    }
 }
 
-@keyframes pulse {
+@keyframes liquidPulse {
     0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.8;
+        transform: scale(1) rotate(0deg);
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.5);
-        opacity: 0.4;
+        transform: scale(1.1) rotate(180deg);
     }
 }
 
-@keyframes cursorPulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-}
-
-@keyframes cursorRipple {
+@keyframes liquidRotate {
     0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
     }
     100% {
-        transform: translate(-50%, -50%) scale(2);
-        opacity: 0;
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes glassShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
     }
 }
 
 // Responsive adjustments
 @media (max-width: 768px) {
-    .floatingElement {
-        width: 40px;
-        height: 40px;
-        
-        &::before {
-            width: 15px;
-            height: 15px;
-        }
+    .liquidShape {
+        width: 300px;
+        height: 300px;
     }
     
-    .cursorFollower {
-        width: 15px;
-        height: 15px;
-        
-        &::before {
-            width: 30px;
-            height: 30px;
-        }
+    .glassPanel {
+        width: 250px;
+        height: 150px;
+    }
+    
+    .logoReveal svg {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .particle {
+        --size: calc(var(--size) * 0.7) !important;
     }
 }
 
-// High contrast mode support
-@media (prefers-contrast: high) {
-    .firstLayer {
-        background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+@media (max-width: 480px) {
+    .liquidShape {
+        width: 250px;
+        height: 250px;
     }
     
-    .floatingElement {
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    .glassPanel {
+        width: 200px;
+        height: 120px;
     }
 }
 
 // Reduced motion support
 @media (prefers-reduced-motion: reduce) {
-    .secondLayer,
-    .thirdLayer,
-    .floatingElement,
-    .cursorFollower {
+    .colorWave1::before,
+    .liquidShape::before,
+    .liquidInner,
+    .glassShine,
+    .logoReveal svg {
         animation: none;
+    }
+    
+    .particle::before {
+        display: none;
+    }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+    .colorWave1 {
+        background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+    }
+    
+    .colorWave2 {
+        background: linear-gradient(-45deg, #1a1a1a 0%, #333333 100%);
+    }
+    
+    .glassPanel {
+        background: rgba(0, 0, 0, 0.9);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+    .glassPanel {
+        background: rgba(20, 20, 30, 0.4);
+        border-color: rgba(255, 255, 255, 0.15);
     }
 }

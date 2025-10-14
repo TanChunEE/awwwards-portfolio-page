@@ -30,11 +30,21 @@ export default function index() {
     useLayoutEffect( () => {
         gsap.registerPlugin(ScrollTrigger)
         
+        // Kill any existing ScrollTrigger to prevent conflicts
+        ScrollTrigger.getAll().forEach(trigger => {
+            if (trigger.vars.trigger === document.documentElement) {
+                trigger.kill();
+            }
+        });
+        
         // Check if we're on home page or other pages
         const isHomePage = pathname === '/';
         
         if (isHomePage) {
-            // On home page: show button after scrolling 100vh
+            // On home page: hide button initially and show after scrolling 100vh
+            gsap.set(button.current, {scale: 0}); // Hide button initially
+            setIsVisible(false);
+            
             gsap.to(button.current, {
                 scrollTrigger: {
                     trigger: document.documentElement,
@@ -55,13 +65,6 @@ export default function index() {
             // On other pages: show button immediately
             gsap.set(button.current, {scale: 1});
             setIsVisible(true);
-            
-            // Kill any existing ScrollTrigger to prevent conflicts
-            ScrollTrigger.getAll().forEach(trigger => {
-                if (trigger.vars.trigger === document.documentElement) {
-                    trigger.kill();
-                }
-            });
         }
         
         // Cleanup function
